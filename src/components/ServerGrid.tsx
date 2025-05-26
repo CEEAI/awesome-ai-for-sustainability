@@ -14,8 +14,11 @@ const ServerGrid: React.FC<ServerGridProps> = ({ servers }) => {
         {servers.map((server, index) => (
           <div
             key={server.id}
-            className="animate-fade-in"
-            style={{ animationDelay: `${index * 0.1}s` }}
+            className="opacity-0 animate-fade-in"
+            style={{ 
+              animationDelay: `${Math.min(index * 0.05, 0.5)}s`,
+              animationFillMode: 'forwards'
+            }}
           >
             <ServerCard
               name={server.name}
@@ -30,7 +33,7 @@ const ServerGrid: React.FC<ServerGridProps> = ({ servers }) => {
       </div>
       
       {servers.length === 0 && (
-        <div className="text-center py-16">
+        <div className="text-center py-16 opacity-0 animate-fade-in" style={{ animationFillMode: 'forwards' }}>
           <div className="text-gray-400 text-lg mb-2">No servers found</div>
           <div className="text-gray-500 text-sm">Try adjusting your search or filters</div>
         </div>
