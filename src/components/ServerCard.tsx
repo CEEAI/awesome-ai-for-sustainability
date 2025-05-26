@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Github, Package } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ServerCardProps {
@@ -11,6 +11,8 @@ interface ServerCardProps {
   description: string;
   category: string;
   isOfficial?: boolean;
+  githubUrl?: string;
+  npmUrl?: string;
 }
 
 const ServerCard: React.FC<ServerCardProps> = ({
@@ -18,8 +20,18 @@ const ServerCard: React.FC<ServerCardProps> = ({
   description,
   category,
   isOfficial = false,
+  githubUrl,
+  npmUrl,
 }) => {
   const { t } = useLanguage();
+
+  const handleViewDetails = () => {
+    if (githubUrl) {
+      window.open(githubUrl, '_blank');
+    } else if (npmUrl) {
+      window.open(npmUrl, '_blank');
+    }
+  };
 
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white/80 backdrop-blur-sm border border-gray-200/50">
@@ -43,10 +55,22 @@ const ServerCard: React.FC<ServerCardProps> = ({
           <Badge variant="outline" className="text-xs">
             {category}
           </Badge>
-          <Button size="sm" variant="ghost" className="text-brand-600 hover:text-brand-700 hover:bg-brand-50">
-            {t('card.viewDetails')}
-            <ExternalLink className="w-3 h-3 ml-1" />
-          </Button>
+          <div className="flex items-center space-x-2">
+            {githubUrl && (
+              <Button size="sm" variant="ghost" onClick={() => window.open(githubUrl, '_blank')}>
+                <Github className="w-3 h-3" />
+              </Button>
+            )}
+            {npmUrl && (
+              <Button size="sm" variant="ghost" onClick={() => window.open(npmUrl, '_blank')}>
+                <Package className="w-3 h-3" />
+              </Button>
+            )}
+            <Button size="sm" variant="ghost" className="text-brand-600 hover:text-brand-700 hover:bg-brand-50" onClick={handleViewDetails}>
+              {t('card.viewDetails')}
+              <ExternalLink className="w-3 h-3 ml-1" />
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>

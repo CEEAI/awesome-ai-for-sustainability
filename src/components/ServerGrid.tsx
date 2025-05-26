@@ -1,17 +1,10 @@
 
 import React from 'react';
 import ServerCard from './ServerCard';
-
-interface Server {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  isOfficial?: boolean;
-}
+import { ServerInfo } from '@/utils/markdownParser';
 
 interface ServerGridProps {
-  servers: Server[];
+  servers: ServerInfo[];
 }
 
 const ServerGrid: React.FC<ServerGridProps> = ({ servers }) => {
@@ -29,6 +22,8 @@ const ServerGrid: React.FC<ServerGridProps> = ({ servers }) => {
               description={server.description}
               category={server.category}
               isOfficial={server.isOfficial}
+              githubUrl={server.githubUrl}
+              npmUrl={server.npmUrl}
             />
           </div>
         ))}
