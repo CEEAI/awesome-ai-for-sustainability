@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import Navigation from './Navigation';
 import HeroSection from './HeroSection';
@@ -6,16 +5,14 @@ import FilterTabs from './FilterTabs';
 import ServerGrid from './ServerGrid';
 import { useReadmeData } from '@/hooks/useReadmeData';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getRepositoryUrl } from '@/config/repository';
 
 const HomePage = () => {
   const { language } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   
-  // 从 README 获取数据
+  // 从本地 README 获取数据
   const { data: servers = [], isLoading, error } = useReadmeData({
-    repoUrl: getRepositoryUrl(),
     language,
   });
 
@@ -81,14 +78,14 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div className="text-center py-16">
             <div className="text-gray-400 text-lg mb-2">Loading servers...</div>
-            <div className="text-gray-500 text-sm">Fetching data from README.md</div>
+            <div className="text-gray-500 text-sm">Reading from local README files</div>
           </div>
         </div>
       ) : error ? (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div className="text-center py-16">
             <div className="text-red-400 text-lg mb-2">Failed to load servers</div>
-            <div className="text-gray-500 text-sm">Please check the repository configuration</div>
+            <div className="text-gray-500 text-sm">Please check the README.md file in the project root</div>
           </div>
         </div>
       ) : (

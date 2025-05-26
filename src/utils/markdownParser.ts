@@ -60,35 +60,22 @@ export const parseMarkdownToServers = (markdownContent: string): ServerInfo[] =>
   return servers;
 };
 
-export const fetchReadmeContent = async (repoUrl: string, language: 'en' | 'zh' = 'en'): Promise<string> => {
+export const fetchReadmeContent = async (language: 'en' | 'zh' = 'en'): Promise<string> => {
   try {
-    // 从 GitHub URL 提取用户名和仓库名
-    const match = repoUrl.match(/github\.com\/([^\/]+)\/([^\/]+)/);
-    if (!match) {
-      throw new Error('Invalid GitHub URL');
-    }
+    const fileName = language === 'zh' ? '/README_CN.md' : '/README.md';
+    const response = await fetch(fileName);
     
-    const [, owner, repo] = match;
-    const fileName = language === 'zh' ? 'README_zh.md' : 'README.md';
-    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${fileName}`;
-    
-    const response = await fetch(apiUrl);
     if (!response.ok) {
       // 如果找不到指定语言的文件，回退到默认 README.md
       if (language === 'zh') {
-        return fetchReadmeContent(repoUrl, 'en');
+        return fetchReadmeContent('en');
       }
       throw new Error(`Failed to fetch README: ${response.statusText}`);
     }
     
-    const data = await response.json();
-    if (data.content) {
-      return atob(data.content.replace(/\s/g, ''));
-    }
-    
-    throw new Error('No content found in README');
+    return await response.text();
   } catch (error) {
-    console.error('Error fetching README:', error);
+    console.error('Error fetching local README:', error);
     throw error;
   }
 };

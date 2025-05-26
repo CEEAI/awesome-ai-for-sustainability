@@ -1,73 +1,75 @@
-# Welcome to your Lovable project
 
-## Project info
+# Awesome MCP Servers
 
-**URL**: https://lovable.dev/projects/6e93425c-9dff-4b6b-874b-5bc5c1733b61
+A collection of servers for the Model Context Protocol.
 
-## How can I edit this code?
+## Official Servers
 
-There are several ways of editing your application.
+- [Brave Search](https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search) ⭐ - Web and local search using Brave's Search API
+- [Filesystem](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) ⭐ - Secure file operations with configurable access controls
+- [Git](https://github.com/modelcontextprotocol/servers/tree/main/src/git) ⭐ - Tools to read, search, and manipulate Git repositories
+- [GitHub](https://github.com/modelcontextprotocol/servers/tree/main/src/github) ⭐ - Repository management, file operations, and GitHub API integration
+- [GitLab](https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab) ⭐ - GitLab API, merge requests, issues, and repository management
+- [Google Drive](https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive) ⭐ - File access and search capabilities for Google Drive
+- [PostgreSQL](https://github.com/modelcontextprotocol/servers/tree/main/src/postgres) ⭐ - Read-only database access with schema introspection
+- [Slack](https://github.com/modelcontextprotocol/servers/tree/main/src/slack) ⭐ - Channel management and messaging capabilities
+- [SQLite](https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite) ⭐ - Database interaction and business intelligence queries
 
-**Use Lovable**
+## Search
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6e93425c-9dff-4b6b-874b-5bc5c1733b61) and start prompting.
+- [Exa Search](https://github.com/exa-labs/exa-mcp-server) - Web search using Exa's search API with semantic search capabilities
+- [Tavily Search](https://github.com/tavily-ai/tavily-mcp-server) - Web search using Tavily's search API optimized for LLMs and RAG
 
-Changes made via Lovable will be committed automatically to this repo.
+## Web Scraping
 
-**Use your preferred IDE**
+- [Puppeteer](https://github.com/executeautomation/puppeteer-mcp-server) - Web scraping and browser automation using Puppeteer
+- [Playwright](https://github.com/executeautomation/playwright-mcp-server) - Web scraping and browser automation using Playwright
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Communication
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- [Discord](https://github.com/iamjameskeane/discord-mcp-server) - Discord bot integration and channel management
+- [WhatsApp](https://github.com/iamjameskeane/whatsapp-mcp-server) - WhatsApp messaging integration
 
-Follow these steps:
+## Productivity
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- [Notion](https://github.com/iamjameskeane/notion-mcp-server) - Notion workspace integration and content management
+- [Obsidian](https://github.com/iamjameskeane/obsidian-mcp-server) - Obsidian vault management and note-taking
+- [Linear](https://github.com/iamjameskeane/linear-mcp-server) - Linear issue tracking and project management
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Development
 
-# Step 3: Install the necessary dependencies.
-npm i
+- [NPM](https://github.com/iamjameskeane/npm-mcp-server) - NPM package search and management
+- [Docker](https://github.com/iamjameskeane/docker-mcp-server) - Docker container and image management
+- [Kubernetes](https://github.com/iamjameskeane/kubernetes-mcp-server) - Kubernetes cluster management and operations
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## Database
 
-**Edit a file directly in GitHub**
+- [MySQL](https://github.com/iamjameskeane/mysql-mcp-server) - MySQL database operations and queries
+- [MongoDB](https://github.com/iamjameskeane/mongodb-mcp-server) - MongoDB database operations and document management
+- [Redis](https://github.com/iamjameskeane/redis-mcp-server) - Redis operations and caching management
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Cloud Service
 
-**Use GitHub Codespaces**
+- [AWS](https://github.com/iamjameskeane/aws-mcp-server) - AWS service integration and management
+- [Azure](https://github.com/iamjameskeane/azure-mcp-server) - Microsoft Azure service integration
+- [Google Cloud](https://github.com/iamjameskeane/gcp-mcp-server) - Google Cloud Platform integration
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## File System
 
-## What technologies are used for this project?
+- [S3](https://github.com/iamjameskeane/s3-mcp-server) - Amazon S3 file operations and management
+- [FTP](https://github.com/iamjameskeane/ftp-mcp-server) - FTP file transfer and management
 
-This project is built with:
+## Cloud Storage
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- [Dropbox](https://github.com/iamjameskeane/dropbox-mcp-server) - Dropbox file sync and sharing
+- [OneDrive](https://github.com/iamjameskeane/onedrive-mcp-server) - Microsoft OneDrive integration
 
-## How can I deploy this project?
+## Version Control
 
-Simply open [Lovable](https://lovable.dev/projects/6e93425c-9dff-4b6b-874b-5bc5c1733b61) and click on Share -> Publish.
+- [Bitbucket](https://github.com/iamjameskeane/bitbucket-mcp-server) - Bitbucket repository management and operations
+- [Subversion](https://github.com/iamjameskeane/svn-mcp-server) - Subversion version control operations
 
-## Can I connect a custom domain to my Lovable project?
+## Other
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- [Weather](https://github.com/iamjameskeane/weather-mcp-server) - Weather information and forecasting
+- [Time](https://github.com/iamjameskeane/time-mcp-server) - Time zone conversion and world clock
