@@ -1,5 +1,5 @@
 
-# Awesome MCP Servers
+# Awesome AI for Sustainability
 
 A collection of servers for the Model Context Protocol.
 
