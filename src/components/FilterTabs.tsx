@@ -47,7 +47,7 @@ const FilterTabs: React.FC<FilterTabsProps> = ({
               placeholder={t('search.placeholder')}
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="pl-12 pr-4 py-3 text-lg border-2 border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg hover:border-blue-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200"
+              className="pl-12 pr-4 py-3 text-lg border-2 border-gray-200 rounded-lg bg-white/80 backdrop-blur-sm shadow-lg hover:border-blue-300 focus:border-blue-500 focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 transition-all duration-200"
             />
             {searchQuery && (
               <button
