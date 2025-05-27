@@ -7,6 +7,7 @@ A collection of servers for the Model Context Protocol.
 
 ## Official Servers
 
+- [TianGong AI Knowledge Base](https://github.com/linancn/tiangong-ai-mcp/tree/main) ⭐ - TianGong Knowledge Base Hybrid Search API
 - [Brave Search](https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search) ⭐ - Web and local search using Brave's Search API
 - [Filesystem](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) ⭐ - Secure file operations with configurable access controls
 - [Git](https://github.com/modelcontextprotocol/servers/tree/main/src/git) ⭐ - Tools to read, search, and manipulate Git repositories
