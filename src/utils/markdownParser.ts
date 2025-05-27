@@ -62,7 +62,7 @@ export const parseMarkdownToServers = (markdownContent: string): ServerInfo[] =>
 
 export const fetchReadmeContent = async (language: 'en' | 'zh' = 'en'): Promise<string> => {
   try {
-    const fileName = language === 'zh' ? '/README_CN.md' : '/README.md';
+    const fileName = language === 'zh' ? '../../README_CN.md' : '../../README.md';
     const response = await fetch(fileName);
     
     if (!response.ok) {
