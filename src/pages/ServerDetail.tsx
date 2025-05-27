@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -19,7 +18,7 @@ const ServerDetail = () => {
 
   // Fetch specific server directory README from GitHub
   const { data: githubReadme, isLoading: isLoadingReadme } = useQuery({
-    queryKey: ['github-readme', server?.githubUrl, serverId],
+    queryKey: ['github-readme', server?.githubUrl, serverId, language],
     queryFn: async () => {
       if (!server?.githubUrl || !server.githubUrl.includes('github.com')) {
         return null;
@@ -35,7 +34,53 @@ const ServerDetail = () => {
       const serverPath = `src/${serverId}`;
       
       try {
-        // First try README.md
+        // If Chinese interface, try Chinese README files first
+        if (language === 'zh') {
+          // Try README_ZH.md first
+          try {
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/README_ZH.md`);
+            if (response.ok) {
+              const data = await response.json();
+              return atob(data.content);
+            }
+          } catch (error) {
+            console.log('README_ZH.md not found, trying README_CN.md');
+          }
+          
+          // Try README_CN.md
+          try {
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/README_CN.md`);
+            if (response.ok) {
+              const data = await response.json();
+              return atob(data.content);
+            }
+          } catch (error) {
+            console.log('README_CN.md not found, trying readme_zh.md');
+          }
+          
+          // Try lowercase versions
+          try {
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/readme_zh.md`);
+            if (response.ok) {
+              const data = await response.json();
+              return atob(data.content);
+            }
+          } catch (error) {
+            console.log('readme_zh.md not found, trying readme_cn.md');
+          }
+          
+          try {
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/readme_cn.md`);
+            if (response.ok) {
+              const data = await response.json();
+              return atob(data.content);
+            }
+          } catch (error) {
+            console.log('readme_cn.md not found, falling back to README.md');
+          }
+        }
+        
+        // Fall back to English README.md
         const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/README.md`);
         
         if (response.ok) {
