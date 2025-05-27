@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -11,7 +12,7 @@ import { useReadmeData } from '@/hooks/useReadmeData';
 
 const ServerDetail = () => {
   const { serverId } = useParams<{ serverId: string }>();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const { data: servers, isLoading } = useReadmeData({ language });
 
   const server = servers?.find(s => s.id === serverId);
@@ -125,11 +126,11 @@ const ServerDetail = () => {
         <div className="max-w-6xl mx-auto px-4 py-8">
           <Link to="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
+            {t('server.backToHome')}
           </Link>
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Server Not Found</h1>
-            <p className="text-gray-600">The server you're looking for doesn't exist.</p>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">{t('server.notFound')}</h1>
+            <p className="text-gray-600">{t('server.notFoundDesc')}</p>
           </div>
         </div>
       </div>
@@ -141,7 +142,7 @@ const ServerDetail = () => {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <Link to="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6">
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Home
+          {t('server.backToHome')}
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -152,7 +153,7 @@ const ServerDetail = () => {
                 <h1 className="text-3xl font-bold text-gray-900">{server.name}</h1>
                 {server.isOfficial && (
                   <Badge variant="secondary" className="bg-blue-100 text-blue-800 border-blue-200">
-                    ⭐ Official
+                    ⭐ {t('server.official')}
                   </Badge>
                 )}
               </div>
@@ -166,7 +167,7 @@ const ServerDetail = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <Github className="w-5 h-5 mr-2" />
-                    README
+                    {t('server.readme')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -213,7 +214,7 @@ const ServerDetail = () => {
                       </ReactMarkdown>
                     </div>
                   ) : (
-                    <p className="text-gray-500">README not available for this server</p>
+                    <p className="text-gray-500">{t('server.readmeNotAvailable')}</p>
                   )}
                 </CardContent>
               </Card>
@@ -224,7 +225,7 @@ const ServerDetail = () => {
           <div className="lg:col-span-1">
             <Card>
               <CardHeader>
-                <CardTitle>Links</CardTitle>
+                <CardTitle>{t('server.links')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {server.githubUrl && (
@@ -234,7 +235,7 @@ const ServerDetail = () => {
                     onClick={() => window.open(server.githubUrl, '_blank')}
                   >
                     <Github className="w-4 h-4 mr-2" />
-                    View on GitHub
+                    {t('server.viewOnGitHub')}
                   </Button>
                 )}
                 {server.npmUrl && (
@@ -244,7 +245,7 @@ const ServerDetail = () => {
                     onClick={() => window.open(server.npmUrl, '_blank')}
                   >
                     <Package className="w-4 h-4 mr-2" />
-                    View on NPM
+                    {t('server.viewOnNPM')}
                   </Button>
                 )}
                 <Button 
@@ -253,24 +254,24 @@ const ServerDetail = () => {
                   onClick={() => window.open(server.githubUrl || server.npmUrl || '#', '_blank')}
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  Open External Link
+                  {t('server.openExternalLink')}
                 </Button>
               </CardContent>
             </Card>
 
             <Card className="mt-6">
               <CardHeader>
-                <CardTitle>Server Info</CardTitle>
+                <CardTitle>{t('server.serverInfo')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 <div>
-                  <span className="font-medium text-gray-700">Category:</span>
+                  <span className="font-medium text-gray-700">{t('server.category')}:</span>
                   <span className="ml-2 text-gray-600">{server.category}</span>
                 </div>
                 <div>
-                  <span className="font-medium text-gray-700">Type:</span>
+                  <span className="font-medium text-gray-700">{t('server.type')}:</span>
                   <span className="ml-2 text-gray-600">
-                    {server.isOfficial ? 'Official' : 'Community'}
+                    {server.isOfficial ? t('server.official') : t('server.community')}
                   </span>
                 </div>
               </CardContent>
