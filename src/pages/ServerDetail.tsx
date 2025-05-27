@@ -16,7 +16,7 @@ const ServerDetail = () => {
 
   const server = servers?.find(s => s.id === serverId);
 
-  // Fetch README from GitHub root directory only
+  // Fetch README from GitHub using raw content URL
   const { data: githubReadme, isLoading: isLoadingReadme } = useQuery({
     queryKey: ['github-readme', server?.githubUrl, language],
     queryFn: async () => {
@@ -31,20 +31,21 @@ const ServerDetail = () => {
       const [, owner, repo] = match;
       console.log(`Attempting to fetch README for ${owner}/${repo}`);
       
-      // Helper function to try fetching a file
-      const tryFetchFile = async (path: string): Promise<string | null> => {
+      // Helper function to try fetching a file using raw GitHub URL
+      const tryFetchFile = async (filename: string): Promise<string | null> => {
         try {
-          console.log(`Trying to fetch: https://api.github.com/repos/${owner}/${repo}/contents/${path}`);
-          const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`);
+          const url = `https://raw.githubusercontent.com/${owner}/${repo}/main/${filename}`;
+          console.log(`Trying to fetch: ${url}`);
+          const response = await fetch(url);
           if (response.ok) {
-            const data = await response.json();
-            console.log(`Successfully fetched: ${path}`);
-            return atob(data.content);
+            const content = await response.text();
+            console.log(`Successfully fetched: ${filename}`);
+            return content;
           }
-          console.log(`Failed to fetch ${path}: ${response.status}`);
+          console.log(`Failed to fetch ${filename}: ${response.status}`);
           return null;
         } catch (error) {
-          console.log(`Error fetching ${path}:`, error);
+          console.log(`Error fetching ${filename}:`, error);
           return null;
         }
       };
@@ -69,8 +70,8 @@ const ServerDetail = () => {
       );
 
       // Try each path until we find a README
-      for (const path of pathsToTry) {
-        const content = await tryFetchFile(path);
+      for (const filename of pathsToTry) {
+        const content = await tryFetchFile(filename);
         if (content) {
           return content;
         }
