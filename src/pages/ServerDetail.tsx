@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -17,9 +16,9 @@ const ServerDetail = () => {
 
   const server = servers?.find(s => s.id === serverId);
 
-  // Fetch specific server directory README from GitHub
+  // Fetch README from GitHub root directory only
   const { data: githubReadme, isLoading: isLoadingReadme } = useQuery({
-    queryKey: ['github-readme', server?.githubUrl, serverId, language],
+    queryKey: ['github-readme', server?.githubUrl, language],
     queryFn: async () => {
       if (!server?.githubUrl || !server.githubUrl.includes('github.com')) {
         return null;
@@ -30,7 +29,7 @@ const ServerDetail = () => {
       if (!match) return null;
       
       const [, owner, repo] = match;
-      console.log(`Attempting to fetch README for ${owner}/${repo}, serverId: ${serverId}`);
+      console.log(`Attempting to fetch README for ${owner}/${repo}`);
       
       // Helper function to try fetching a file
       const tryFetchFile = async (path: string): Promise<string | null> => {
@@ -50,18 +49,12 @@ const ServerDetail = () => {
         }
       };
 
-      // Try multiple paths in order of preference
+      // Try only root directory paths
       const pathsToTry = [];
       
       // If Chinese interface, try Chinese README files first
       if (language === 'zh') {
-        // Try server-specific Chinese READMEs first
         pathsToTry.push(
-          `src/${serverId}/README_ZH.md`,
-          `src/${serverId}/README_CN.md`,
-          `src/${serverId}/readme_zh.md`,
-          `src/${serverId}/readme_cn.md`,
-          // Then try root Chinese READMEs
           'README_ZH.md',
           'README_CN.md',
           'readme_zh.md',
@@ -69,10 +62,8 @@ const ServerDetail = () => {
         );
       }
       
-      // Always try English READMEs (server-specific first, then root)
+      // Always try English READMEs from root
       pathsToTry.push(
-        `src/${serverId}/README.md`,
-        `src/${serverId}/readme.md`,
         'README.md',
         'readme.md'
       );
@@ -88,7 +79,7 @@ const ServerDetail = () => {
       console.log(`No README found for ${owner}/${repo}`);
       return null;
     },
-    enabled: !!server?.githubUrl && server.githubUrl.includes('github.com') && !!serverId,
+    enabled: !!server?.githubUrl && server.githubUrl.includes('github.com'),
   });
 
   if (isLoading) {
