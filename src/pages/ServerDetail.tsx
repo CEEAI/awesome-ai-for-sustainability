@@ -1,8 +1,8 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft, Github, Package, ExternalLink } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -113,10 +113,8 @@ const ServerDetail = () => {
                       <div className="h-4 bg-gray-300 rounded w-2/3"></div>
                     </div>
                   ) : githubReadme ? (
-                    <div className="prose max-w-none">
-                      <pre className="whitespace-pre-wrap text-sm text-gray-700 bg-gray-50 p-4 rounded border overflow-x-auto">
-                        {githubReadme}
-                      </pre>
+                    <div className="prose prose-gray max-w-none prose-headings:text-gray-900 prose-links:text-blue-600 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-50 prose-pre:border">
+                      <ReactMarkdown>{githubReadme}</ReactMarkdown>
                     </div>
                   ) : (
                     <p className="text-gray-500">README not available</p>
