@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -16,9 +17,9 @@ const ServerDetail = () => {
 
   const server = servers?.find(s => s.id === serverId);
 
-  // Fetch GitHub README if it's a GitHub project
+  // Fetch specific server directory README from GitHub
   const { data: githubReadme, isLoading: isLoadingReadme } = useQuery({
-    queryKey: ['github-readme', server?.githubUrl],
+    queryKey: ['github-readme', server?.githubUrl, serverId],
     queryFn: async () => {
       if (!server?.githubUrl || !server.githubUrl.includes('github.com')) {
         return null;
@@ -29,15 +30,34 @@ const ServerDetail = () => {
       if (!match) return null;
       
       const [, owner, repo] = match;
-      const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`);
       
-      if (!response.ok) return null;
+      // Try to get README from the specific server directory (src/{serverId})
+      const serverPath = `src/${serverId}`;
       
-      const data = await response.json();
-      // Decode base64 content
-      return atob(data.content);
+      try {
+        // First try README.md
+        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/README.md`);
+        
+        if (response.ok) {
+          const data = await response.json();
+          return atob(data.content);
+        }
+        
+        // If README.md doesn't exist, try readme.md
+        const response2 = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/readme.md`);
+        
+        if (response2.ok) {
+          const data = await response2.json();
+          return atob(data.content);
+        }
+        
+        return null;
+      } catch (error) {
+        console.error('Error fetching server README:', error);
+        return null;
+      }
     },
-    enabled: !!server?.githubUrl && server.githubUrl.includes('github.com'),
+    enabled: !!server?.githubUrl && server.githubUrl.includes('github.com') && !!serverId,
   });
 
   if (isLoading) {
@@ -117,7 +137,7 @@ const ServerDetail = () => {
                       <ReactMarkdown>{githubReadme}</ReactMarkdown>
                     </div>
                   ) : (
-                    <p className="text-gray-500">README not available</p>
+                    <p className="text-gray-500">README not available for this server</p>
                   )}
                 </CardContent>
               </Card>
