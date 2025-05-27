@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -7,6 +8,7 @@ import { ExternalLink, Github, Package } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ServerCardProps {
+  id: string;
   name: string;
   description: string;
   category: string;
@@ -16,6 +18,7 @@ interface ServerCardProps {
 }
 
 const ServerCard: React.FC<ServerCardProps> = ({
+  id,
   name,
   description,
   category,
@@ -24,13 +27,10 @@ const ServerCard: React.FC<ServerCardProps> = ({
   npmUrl,
 }) => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const handleViewDetails = () => {
-    if (githubUrl) {
-      window.open(githubUrl, '_blank');
-    } else if (npmUrl) {
-      window.open(npmUrl, '_blank');
-    }
+    navigate(`/server/${id}`);
   };
 
   return (

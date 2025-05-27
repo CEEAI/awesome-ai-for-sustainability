@@ -21,6 +21,7 @@ const ServerGrid: React.FC<ServerGridProps> = ({ servers }) => {
             }}
           >
             <ServerCard
+              id={server.id}
               name={server.name}
               description={server.description}
               category={server.category}
