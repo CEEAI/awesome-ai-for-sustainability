@@ -30,78 +30,63 @@ const ServerDetail = () => {
       if (!match) return null;
       
       const [, owner, repo] = match;
+      console.log(`Attempting to fetch README for ${owner}/${repo}, serverId: ${serverId}`);
       
-      // Try to get README from the specific server directory (src/{serverId})
-      const serverPath = `src/${serverId}`;
+      // Helper function to try fetching a file
+      const tryFetchFile = async (path: string): Promise<string | null> => {
+        try {
+          console.log(`Trying to fetch: https://api.github.com/repos/${owner}/${repo}/contents/${path}`);
+          const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`);
+          if (response.ok) {
+            const data = await response.json();
+            console.log(`Successfully fetched: ${path}`);
+            return atob(data.content);
+          }
+          console.log(`Failed to fetch ${path}: ${response.status}`);
+          return null;
+        } catch (error) {
+          console.log(`Error fetching ${path}:`, error);
+          return null;
+        }
+      };
+
+      // Try multiple paths in order of preference
+      const pathsToTry = [];
       
-      try {
-        // If Chinese interface, try Chinese README files first
-        if (language === 'zh') {
-          // Try README_ZH.md first
-          try {
-            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/README_ZH.md`);
-            if (response.ok) {
-              const data = await response.json();
-              return atob(data.content);
-            }
-          } catch (error) {
-            console.log('README_ZH.md not found, trying README_CN.md');
-          }
-          
-          // Try README_CN.md
-          try {
-            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/README_CN.md`);
-            if (response.ok) {
-              const data = await response.json();
-              return atob(data.content);
-            }
-          } catch (error) {
-            console.log('README_CN.md not found, trying readme_zh.md');
-          }
-          
-          // Try lowercase versions
-          try {
-            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/readme_zh.md`);
-            if (response.ok) {
-              const data = await response.json();
-              return atob(data.content);
-            }
-          } catch (error) {
-            console.log('readme_zh.md not found, trying readme_cn.md');
-          }
-          
-          try {
-            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/readme_cn.md`);
-            if (response.ok) {
-              const data = await response.json();
-              return atob(data.content);
-            }
-          } catch (error) {
-            console.log('readme_cn.md not found, falling back to README.md');
-          }
-        }
-        
-        // Fall back to English README.md
-        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/README.md`);
-        
-        if (response.ok) {
-          const data = await response.json();
-          return atob(data.content);
-        }
-        
-        // If README.md doesn't exist, try readme.md
-        const response2 = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${serverPath}/readme.md`);
-        
-        if (response2.ok) {
-          const data = await response2.json();
-          return atob(data.content);
-        }
-        
-        return null;
-      } catch (error) {
-        console.error('Error fetching server README:', error);
-        return null;
+      // If Chinese interface, try Chinese README files first
+      if (language === 'zh') {
+        // Try server-specific Chinese READMEs first
+        pathsToTry.push(
+          `src/${serverId}/README_ZH.md`,
+          `src/${serverId}/README_CN.md`,
+          `src/${serverId}/readme_zh.md`,
+          `src/${serverId}/readme_cn.md`,
+          // Then try root Chinese READMEs
+          'README_ZH.md',
+          'README_CN.md',
+          'readme_zh.md',
+          'readme_cn.md'
+        );
       }
+      
+      // Always try English READMEs (server-specific first, then root)
+      pathsToTry.push(
+        `src/${serverId}/README.md`,
+        `src/${serverId}/readme.md`,
+        'README.md',
+        'readme.md'
+      );
+
+      // Try each path until we find a README
+      for (const path of pathsToTry) {
+        const content = await tryFetchFile(path);
+        if (content) {
+          return content;
+        }
+      }
+      
+      console.log(`No README found for ${owner}/${repo}`);
+      return null;
     },
     enabled: !!server?.githubUrl && server.githubUrl.includes('github.com') && !!serverId,
   });
