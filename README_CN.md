@@ -1,5 +1,7 @@
 
-# 优秀的 MCP 服务器
+# 可持续发展AI资源大全
+
+[中文](./README_CN.md) | [English](./README.md)
 
 模型上下文协议服务器集合。
 

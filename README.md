@@ -1,6 +1,8 @@
 
 # Awesome AI for Sustainability
 
+[中文](./README_CN.md) | [English](./README.md)
+
 A collection of servers for the Model Context Protocol.
 
 ## Official Servers
