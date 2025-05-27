@@ -62,8 +62,9 @@ export const parseMarkdownToServers = (markdownContent: string): ServerInfo[] =>
 
 export const fetchReadmeContent = async (language: 'en' | 'zh' = 'en'): Promise<string> => {
   try {
-    const fileName = language === 'zh' ? '/README_CN.md' : '/README.md';
-    const response = await fetch(fileName);
+    // 直接从根目录读取文件
+    const fileName = language === 'zh' ? 'README_CN.md' : 'README.md';
+    const response = await fetch(`/${fileName}`);
     
     if (!response.ok) {
       // 如果找不到指定语言的文件，回退到默认 README.md
@@ -75,7 +76,7 @@ export const fetchReadmeContent = async (language: 'en' | 'zh' = 'en'): Promise<
     
     return await response.text();
   } catch (error) {
-    console.error('Error fetching local README:', error);
+    console.error('Error fetching README from root directory:', error);
     throw error;
   }
 };
