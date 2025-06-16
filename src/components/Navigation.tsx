@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
@@ -13,7 +12,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
             <div className="flex items-center">
-              <img src="/logo.svg" alt="Logo" className="h-10 w-auto" />
+              <img src="/logo.svg" alt="Logo" className="h-8 w-auto" />
             </div>
             <div className="hidden md:flex space-x-6">
               <a href="#" className="text-gray-700 hover:text-brand-600 transition-colors">
