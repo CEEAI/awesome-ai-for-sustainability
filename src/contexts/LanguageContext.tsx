@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'en' | 'zh';
@@ -13,8 +14,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const translations = {
   en: {
     'nav.home': 'Home',
-    'nav.servers': 'Remote Servers',
-    'nav.resources': 'Resources',
+    'nav.about': 'About CEEAI',
     'nav.submit': 'Submit',
     'nav.chatHub': 'ChatHub',
     'hero.title': 'Awesome AI for Sustainability',
@@ -49,11 +49,22 @@ const translations = {
     'server.type': 'Type',
     'server.official': 'Official',
     'server.community': 'Community',
+    'about.title': 'About CEEAI',
+    'about.subtitle': 'China Ecological Environment AI Committee',
+    'about.description': 'The China Ecological Environment AI Committee (CEEAI) is a professional committee under the Chinese Society for Environmental Sciences, dedicated to promoting the application of artificial intelligence in the ecological and environmental domain.',
+    'about.mission.title': 'Our Mission',
+    'about.mission.desc': 'To advance the integration of AI technologies with environmental science and promote sustainable development through innovative solutions.',
+    'about.vision.title': 'Our Vision',
+    'about.vision.desc': 'To become a leading platform for AI-driven environmental solutions and foster collaboration between researchers, industry, and policymakers.',
+    'about.contact.title': 'Contact Us',
+    'about.contact.email': 'Email',
+    'about.contact.website': 'Website',
+    'about.contact.address': 'Address',
+    'about.contact.addressValue': 'Chinese Society for Environmental Sciences, Beijing, China',
   },
   zh: {
     'nav.home': '首页',
-    'nav.servers': '远程服务器',
-    'nav.resources': '资源',
+    'nav.about': '关于CEEAI',
     'nav.submit': '提交',
     'nav.chatHub': '聊天中心',
     'hero.title': 'AI时代的生态环境领域引擎',
@@ -88,6 +99,18 @@ const translations = {
     'server.type': '类型',
     'server.official': '官方',
     'server.community': '社区',
+    'about.title': '关于CEEAI',
+    'about.subtitle': '中国环境科学学会生态环境人工智能专委会',
+    'about.description': '中国环境科学学会生态环境人工智能专委会（CEEAI）是中国环境科学学会下属的专业委员会，致力于推动人工智能技术在生态环境领域的应用。',
+    'about.mission.title': '我们的使命',
+    'about.mission.desc': '推进人工智能技术与环境科学的融合发展，通过创新解决方案促进可持续发展。',
+    'about.vision.title': '我们的愿景',
+    'about.vision.desc': '成为AI驱动的环境解决方案的引领平台，促进研究人员、产业界和政策制定者之间的合作。',
+    'about.contact.title': '联系我们',
+    'about.contact.email': '邮箱',
+    'about.contact.website': '官网',
+    'about.contact.address': '地址',
+    'about.contact.addressValue': '中国环境科学学会，中国北京',
   }
 };
 
