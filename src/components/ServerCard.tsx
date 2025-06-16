@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -29,26 +30,20 @@ const ServerCard: React.FC<ServerCardProps> = ({
   const navigate = useNavigate();
 
   const handleViewDetails = () => {
-    // 如果 githubUrl 存在但不是 GitHub 链接，直接打开外部链接
+    // 优先检查是否有外部链接（非GitHub的githubUrl或者npmUrl）
     if (githubUrl && !githubUrl.includes('github.com')) {
+      // 如果githubUrl存在但不是GitHub链接，直接打开
       window.open(githubUrl, '_blank');
-      return;
-    }
-    
-    // 如果只有 npmUrl 没有 githubUrl，打开 npm 链接
-    if (npmUrl && !githubUrl) {
+    } else if (npmUrl && !githubUrl) {
+      // 如果只有npmUrl没有githubUrl，打开npm链接
       window.open(npmUrl, '_blank');
-      return;
-    }
-    
-    // 如果有 GitHub 链接，跳转到详情页
-    if (githubUrl && githubUrl.includes('github.com')) {
+    } else if (githubUrl && githubUrl.includes('github.com')) {
+      // 如果是GitHub链接，跳转到详情页
       navigate(`/server/${id}`);
-      return;
+    } else {
+      // 如果什么链接都没有，跳转到详情页
+      navigate(`/server/${id}`);
     }
-    
-    // 最后的默认情况：如果什么链接都没有，也跳转到详情页
-    navigate(`/server/${id}`);
   };
 
   return (
