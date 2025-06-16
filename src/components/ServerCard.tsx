@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -41,23 +40,23 @@ const ServerCard: React.FC<ServerCardProps> = ({
   };
 
   return (
-    <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white/80 backdrop-blur-sm border border-gray-200/50">
-      <CardHeader className="pb-3">
+    <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white/80 backdrop-blur-sm border border-gray-200/50 h-[280px] flex flex-col">
+      <CardHeader className="pb-3 flex-shrink-0">
         <div className="flex items-start justify-between">
-          <CardTitle className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
+          <CardTitle className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2">
             {name}
           </CardTitle>
           {isOfficial && (
-            <Badge variant="secondary" className="bg-blue-100 text-blue-800 border-blue-200 text-xs">
+            <Badge variant="secondary" className="bg-blue-100 text-blue-800 border-blue-200 text-xs flex-shrink-0">
               ⭐
             </Badge>
           )}
         </div>
-        <CardDescription className="text-gray-600 text-sm leading-relaxed">
+        <CardDescription className="text-gray-600 text-sm leading-relaxed line-clamp-3">
           {description}
         </CardDescription>
       </CardHeader>
-      <CardContent className="pt-0">
+      <CardContent className="pt-0 flex-1 flex flex-col justify-end">
         <div className="flex items-center justify-between">
           <Badge variant="outline" className="text-xs">
             {category}
@@ -85,4 +84,3 @@ const ServerCard: React.FC<ServerCardProps> = ({
 };
 
 export default ServerCard;
-
