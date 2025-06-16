@@ -39,8 +39,8 @@ const ServerCard: React.FC<ServerCardProps> = ({
     }
   };
 
-  // 清理描述中的星号emoji
-  const cleanDescription = description.replace(/⭐\s*/g, '').trim();
+  // 清理描述中的星号emoji和破折号前缀
+  const cleanDescription = description.replace(/⭐\s*/g, '').replace(/^[\s-]+/, '').trim();
 
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white/80 backdrop-blur-sm border border-gray-200/50 h-[200px] flex flex-col">
@@ -50,7 +50,7 @@ const ServerCard: React.FC<ServerCardProps> = ({
             {name}
           </CardTitle>
           {isOfficial && (
-            <div className="flex items-center justify-center w-6 h-6 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full shadow-sm flex-shrink-0">
+            <div className="flex items-center justify-center w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full shadow-sm flex-shrink-0" title="已认证推荐">
               <Star className="w-3 h-3 text-white fill-white" />
             </div>
           )}
