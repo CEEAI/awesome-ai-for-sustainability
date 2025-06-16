@@ -3,7 +3,7 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
-import { Mail, Globe, MapPin, Users, Target, Eye } from 'lucide-react';
+import { Mail, MapPin, Users, Target, Eye, MessageCircle } from 'lucide-react';
 
 const AboutPage = () => {
   const { t } = useLanguage();
@@ -76,20 +76,12 @@ const AboutPage = () => {
               </h2>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
                 <Mail className="w-5 h-5 text-brand-600" />
                 <div>
                   <p className="font-medium text-gray-900">{t('about.contact.email')}</p>
-                  <p className="text-sm text-gray-600">contact@ceeai.org</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
-                <Globe className="w-5 h-5 text-brand-600" />
-                <div>
-                  <p className="font-medium text-gray-900">{t('about.contact.website')}</p>
-                  <p className="text-sm text-gray-600">www.ceeai.org</p>
+                  <p className="text-sm text-gray-600">admin@ceeai.net</p>
                 </div>
               </div>
               
@@ -98,6 +90,20 @@ const AboutPage = () => {
                 <div>
                   <p className="font-medium text-gray-900">{t('about.contact.address')}</p>
                   <p className="text-sm text-gray-600">{t('about.contact.addressValue')}</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                <MessageCircle className="w-5 h-5 text-brand-600" />
+                <div>
+                  <p className="font-medium text-gray-900">{t('about.contact.wechat')}</p>
+                  <div className="mt-2">
+                    <img 
+                      src="/lovable-uploads/63b01435-7c0e-4b5c-b20b-95593ad187a2.png" 
+                      alt="CEEAI WeChat QR Code" 
+                      className="w-20 h-20 rounded-lg border border-gray-200"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
