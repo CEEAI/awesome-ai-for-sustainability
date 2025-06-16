@@ -10,6 +10,7 @@ interface FilterTabsProps {
   onFilterChange: (filter: string) => void;
   searchQuery: string;
   onSearchChange: (query: string) => void;
+  categories: string[];
 }
 
 const FilterTabs: React.FC<FilterTabsProps> = ({
@@ -17,24 +18,23 @@ const FilterTabs: React.FC<FilterTabsProps> = ({
   onFilterChange,
   searchQuery,
   onSearchChange,
+  categories,
 }) => {
   const { t } = useLanguage();
 
-  const filters = [
+  // 基础过滤器
+  const baseFilters = [
     { id: 'all', label: t('filter.all') },
     { id: 'official', label: t('filter.official'), icon: Star },
-    { id: 'search', label: t('filter.search') },
-    { id: 'web-scraping', label: t('filter.webScraping') },
-    { id: 'communication', label: t('filter.communication') },
-    { id: 'productivity', label: t('filter.productivity') },
-    { id: 'development', label: t('filter.development') },
-    { id: 'database', label: t('filter.database') },
-    { id: 'cloud-service', label: t('filter.cloudService') },
-    { id: 'file-system', label: t('filter.fileSystem') },
-    { id: 'cloud-storage', label: t('filter.cloudStorage') },
-    { id: 'version-control', label: t('filter.versionControl') },
-    { id: 'other', label: t('filter.other') },
   ];
+
+  // 动态生成分类过滤器
+  const categoryFilters = categories.map(category => ({
+    id: category.toLowerCase().replace(/\s+/g, '-'),
+    label: category,
+  }));
+
+  const filters = [...baseFilters, ...categoryFilters];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

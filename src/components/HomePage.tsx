@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo } from 'react';
 import Navigation from './Navigation';
 import HeroSection from './HeroSection';
@@ -11,10 +12,13 @@ const HomePage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   
-  // 从本地 README 获取数据
-  const { data: servers = [], isLoading, error } = useReadmeData({
+  // 从本地 README 获取数据和分类
+  const { data, isLoading, error } = useReadmeData({
     language,
   });
+
+  const servers = data?.servers || [];
+  const categories = data?.categories || [];
 
   const filteredServers = useMemo(() => {
     let filtered = servers;
@@ -33,31 +37,21 @@ const HomePage = () => {
       if (activeFilter === 'official') {
         filtered = filtered.filter(server => server.isOfficial);
       } else {
-        const categoryMap: { [key: string]: string } = {
-          'search': 'Search',
-          'web-scraping': 'Web Scraping',
-          'communication': 'Communication',
-          'productivity': 'Productivity',
-          'development': 'Development',
-          'database': 'Database',
-          'cloud-service': 'Cloud Service',
-          'file-system': 'File System',
-          'cloud-storage': 'Cloud Storage',
-          'version-control': 'Version Control',
-          'other': 'Other',
-        };
+        // 动态匹配分类
+        const targetCategory = categories.find(cat => 
+          cat.toLowerCase().replace(/\s+/g, '-') === activeFilter
+        );
         
-        const targetCategory = categoryMap[activeFilter];
         if (targetCategory) {
           filtered = filtered.filter(server => 
-            server.category.toLowerCase().includes(targetCategory.toLowerCase())
+            server.category === targetCategory
           );
         }
       }
     }
 
     return filtered;
-  }, [servers, activeFilter, searchQuery]);
+  }, [servers, categories, activeFilter, searchQuery]);
 
   if (error) {
     console.error('Error loading README data:', error);
@@ -72,6 +66,7 @@ const HomePage = () => {
         onFilterChange={setActiveFilter}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
+        categories={categories}
       />
       
       {isLoading ? (

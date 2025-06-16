@@ -6,13 +6,25 @@ interface UseReadmeDataProps {
   language: 'en' | 'zh';
 }
 
+interface ReadmeDataResult {
+  servers: ServerInfo[];
+  categories: string[];
+}
+
 export const useReadmeData = ({ language }: UseReadmeDataProps) => {
   return useQuery({
     queryKey: ['readme-data', language],
-    queryFn: async (): Promise<ServerInfo[]> => {
+    queryFn: async (): Promise<ReadmeDataResult> => {
       try {
         const markdownContent = await fetchReadmeContent(language);
-        return parseMarkdownToServers(markdownContent);
+        const servers = parseMarkdownToServers(markdownContent);
+        
+        // 提取所有唯一的分类
+        const categories = Array.from(new Set(servers.map(server => server.category)))
+          .filter(category => category && category !== 'Other')
+          .sort();
+        
+        return { servers, categories };
       } catch (error) {
         console.error('Failed to fetch and parse README:', error);
         throw error;
