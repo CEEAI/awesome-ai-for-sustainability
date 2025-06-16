@@ -215,24 +215,16 @@ const ServerDetail = () => {
                     {t('server.viewOnGitHub')}
                   </Button>
                 )}
-                {server.npmUrl && (
+                {server.externalUrl && (
                   <Button 
                     variant="outline" 
                     className="w-full justify-start"
-                    onClick={() => window.open(server.npmUrl, '_blank')}
+                    onClick={() => window.open(server.externalUrl, '_blank')}
                   >
-                    <Package className="w-4 h-4 mr-2" />
-                    {t('server.viewOnNPM')}
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    {t('server.openExternalLink')}
                   </Button>
                 )}
-                <Button 
-                  variant="outline" 
-                  className="w-full justify-start"
-                  onClick={() => window.open(server.githubUrl || server.npmUrl || '#', '_blank')}
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t('server.openExternalLink')}
-                </Button>
               </CardContent>
             </Card>
 

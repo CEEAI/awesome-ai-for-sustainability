@@ -27,7 +27,7 @@ const ServerGrid: React.FC<ServerGridProps> = ({ servers }) => {
               category={server.category}
               isOfficial={server.isOfficial}
               githubUrl={server.githubUrl}
-              npmUrl={server.npmUrl}
+              externalUrl={server.externalUrl}
             />
           </div>
         ))}

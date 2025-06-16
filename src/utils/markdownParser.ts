@@ -6,7 +6,7 @@ export interface ServerInfo {
   category: string;
   isOfficial?: boolean;
   githubUrl?: string;
-  npmUrl?: string;
+  externalUrl?: string;
 }
 
 export const parseMarkdownToServers = (markdownContent: string): ServerInfo[] => {
@@ -46,7 +46,7 @@ export const parseMarkdownToServers = (markdownContent: string): ServerInfo[] =>
           category: currentCategory,
           isOfficial,
           githubUrl: url.includes('github.com') ? url : undefined,
-          npmUrl: url.includes('npmjs.com') ? url : undefined,
+          externalUrl: !url.includes('github.com') ? url : undefined,
         });
       }
     }

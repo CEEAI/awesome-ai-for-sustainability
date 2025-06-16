@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -13,7 +14,7 @@ interface ServerCardProps {
   category: string;
   isOfficial?: boolean;
   githubUrl?: string;
-  npmUrl?: string;
+  externalUrl?: string;
 }
 
 const ServerCard: React.FC<ServerCardProps> = ({
@@ -23,7 +24,7 @@ const ServerCard: React.FC<ServerCardProps> = ({
   category,
   isOfficial = false,
   githubUrl,
-  npmUrl,
+  externalUrl,
 }) => {
   const { t } = useLanguage();
   const navigate = useNavigate();
@@ -32,12 +33,9 @@ const ServerCard: React.FC<ServerCardProps> = ({
     // 只有 GitHub 链接才跳转到内部详情页
     if (githubUrl) {
       navigate(`/server/${id}`);
-    } else {
+    } else if (externalUrl) {
       // 任何其他外部链接都直接在新标签页打开
-      const externalUrl = npmUrl || githubUrl;
-      if (externalUrl) {
-        window.open(externalUrl, '_blank');
-      }
+      window.open(externalUrl, '_blank');
     }
   };
 
@@ -69,8 +67,8 @@ const ServerCard: React.FC<ServerCardProps> = ({
                 <Github className="w-3 h-3" />
               </Button>
             )}
-            {npmUrl && (
-              <Button size="sm" variant="ghost" onClick={() => window.open(npmUrl, '_blank')}>
+            {externalUrl && !githubUrl && (
+              <Button size="sm" variant="ghost" onClick={() => window.open(externalUrl, '_blank')}>
                 <Package className="w-3 h-3" />
               </Button>
             )}
