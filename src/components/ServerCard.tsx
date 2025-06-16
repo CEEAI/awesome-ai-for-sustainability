@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -42,7 +41,13 @@ const ServerCard: React.FC<ServerCardProps> = ({
       return;
     }
     
-    // 其他情况跳转到详情页
+    // 如果有 GitHub 链接，跳转到详情页
+    if (githubUrl && githubUrl.includes('github.com')) {
+      navigate(`/server/${id}`);
+      return;
+    }
+    
+    // 最后的默认情况：如果什么链接都没有，也跳转到详情页
     navigate(`/server/${id}`);
   };
 
