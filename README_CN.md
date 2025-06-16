@@ -5,7 +5,7 @@
 
 模型上下文协议服务器集合。
 
-## 官方服务器
+## MCP服务器
 
 - [Brave 搜索](https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search) 🏅 - 使用 Brave 搜索 API 进行网络和本地搜索
 - [文件系统](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) 🏅 - 具有可配置访问控制的安全文件操作
