@@ -61,6 +61,7 @@ const translations = {
     'about.contact.address': 'Address',
     'about.contact.addressValue': 'School of Environment, Tsinghua University, Beijing, China',
     'about.contact.wechat': 'WeChat Official Account',
+    'about.contact.scanQR': 'Scan to follow our official account',
   },
   zh: {
     'nav.home': '首页',
@@ -111,6 +112,7 @@ const translations = {
     'about.contact.address': '地址',
     'about.contact.addressValue': '清华大学环境学院，中国北京',
     'about.contact.wechat': '微信公众号',
+    'about.contact.scanQR': '扫描关注公众号',
   }
 };
 

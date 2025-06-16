@@ -115,7 +115,7 @@ const AboutPage = () => {
                     className="w-32 h-32 rounded-lg"
                   />
                 </div>
-                <p className="text-sm text-gray-500 mt-2 text-center">扫描关注公众号</p>
+                <p className="text-sm text-gray-500 mt-2 text-center">{t('about.contact.scanQR')}</p>
               </div>
             </div>
           </CardContent>
