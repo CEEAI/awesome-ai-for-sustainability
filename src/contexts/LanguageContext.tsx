@@ -57,7 +57,7 @@ const translations = {
     'nav.submit': '提交',
     'nav.chatHub': '聊天中心',
     'hero.title': 'AI时代的生态环境领域引擎',
-    'hero.subtitle': '中国环境科学学会生态环境人工智能专委会严选的生态环境领域AI工具、模型、数据与学习资源',
+    'hero.subtitle': '中国环境科学学会生态环境人工智能专委会严选的\n生态环境领域AI工具、模型、数据与学习资源',
     'hero.newBadge': '新功能：远程 MCP 服务器',
     'filter.all': '全部',
     'filter.official': '推荐',

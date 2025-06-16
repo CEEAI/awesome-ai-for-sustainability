@@ -21,7 +21,7 @@ const HeroSection = () => {
           {t('hero.title')}
         </h1>
         
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in">
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in whitespace-pre-line">
           {t('hero.subtitle')}
         </p>
       </div>
