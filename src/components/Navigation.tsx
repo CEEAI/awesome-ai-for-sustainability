@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Globe, MessageSquare, ExternalLink } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navigation = () => {
@@ -40,12 +40,6 @@ const Navigation = () => {
             >
               <Globe className="w-4 h-4" />
               <span>{language === 'en' ? '中文' : 'EN'}</span>
-            </Button>
-            
-            <Button variant="ghost" size="sm" className="flex items-center space-x-1">
-              <MessageSquare className="w-4 h-4" />
-              <span>{t('nav.chatHub')}</span>
-              <ExternalLink className="w-3 h-3" />
             </Button>
             
             <Button className="bg-gray-900 hover:bg-gray-800 text-white">
