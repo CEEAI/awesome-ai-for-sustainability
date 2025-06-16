@@ -13,8 +13,8 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">M</span>
+              <div className="w-8 h-8 flex items-center justify-center">
+                <img src="/logo.svg" alt="MCP Servers" className="w-8 h-8" />
               </div>
               <span className="font-bold text-gray-900">MCP Servers</span>
             </div>
