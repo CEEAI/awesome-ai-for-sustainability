@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, Award, LucideIcon } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface FilterTabsProps {
@@ -16,13 +16,8 @@ interface FilterTabsProps {
 interface BaseFilter {
   id: string;
   label: string;
+  emoji?: string;
 }
-
-interface FilterWithIcon extends BaseFilter {
-  icon: LucideIcon;
-}
-
-type FilterItem = BaseFilter | FilterWithIcon;
 
 const FilterTabs: React.FC<FilterTabsProps> = ({
   activeFilter,
@@ -34,13 +29,13 @@ const FilterTabs: React.FC<FilterTabsProps> = ({
   const { t } = useLanguage();
 
   // 基础过滤器
-  const baseFilters: FilterItem[] = [
+  const baseFilters: BaseFilter[] = [
     { id: 'all', label: t('filter.all') },
-    { id: 'official', label: '推荐', icon: Award },
+    { id: 'official', label: t('filter.official'), emoji: '🏅' },
   ];
 
   // 动态生成分类过滤器
-  const categoryFilters: FilterItem[] = categories.map(category => ({
+  const categoryFilters: BaseFilter[] = categories.map(category => ({
     id: category.toLowerCase().replace(/\s+/g, '-'),
     label: category,
   }));
@@ -74,22 +69,18 @@ const FilterTabs: React.FC<FilterTabsProps> = ({
         {/* 过滤标签区域 */}
         <div className="flex justify-center">
           <div className="flex flex-wrap gap-2 justify-center max-w-4xl">
-            {filters.map((filter) => {
-              const hasIcon = 'icon' in filter;
-              const Icon = hasIcon ? filter.icon : undefined;
-              return (
-                <Button
-                  key={filter.id}
-                  variant={activeFilter === filter.id ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => onFilterChange(filter.id)}
-                  className="flex items-center space-x-1 hover:scale-105 transition-transform duration-150"
-                >
-                  {Icon && <Icon className="w-3 h-3" />}
-                  <span>{filter.label}</span>
-                </Button>
-              );
-            })}
+            {filters.map((filter) => (
+              <Button
+                key={filter.id}
+                variant={activeFilter === filter.id ? "default" : "outline"}
+                size="sm"
+                onClick={() => onFilterChange(filter.id)}
+                className="flex items-center space-x-1 hover:scale-105 transition-transform duration-150"
+              >
+                {filter.emoji && <span>{filter.emoji}</span>}
+                <span>{filter.label}</span>
+              </Button>
+            ))}
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, Globe, Award } from 'lucide-react';
+import { ExternalLink, Github, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ServerCardProps {
@@ -50,8 +50,8 @@ const ServerCard: React.FC<ServerCardProps> = ({
             {name}
           </CardTitle>
           {isOfficial && (
-            <div className="flex items-center justify-center w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full shadow-sm flex-shrink-0" title="已认证推荐">
-              <Award className="w-3 h-3 text-white fill-white" />
+            <div className="text-lg flex-shrink-0" title="认证推荐">
+              🏅
             </div>
           )}
         </div>

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'en' | 'zh';
@@ -22,7 +21,7 @@ const translations = {
     'hero.subtitle': 'A selected collection',
     'hero.newBadge': 'New: TianGong AI MCP Servers',
     'filter.all': 'All',
-    'filter.official': 'Official',
+    'filter.official': 'Featured',
     'filter.search': 'Search',
     'filter.webScraping': 'Web Scraping',
     'filter.communication': 'Communication',
@@ -61,7 +60,7 @@ const translations = {
     'hero.subtitle': '模型上下文协议服务器集合。',
     'hero.newBadge': '新功能：远程 MCP 服务器',
     'filter.all': '全部',
-    'filter.official': '官方',
+    'filter.official': '推荐',
     'filter.search': '搜索',
     'filter.webScraping': '网页抓取',
     'filter.communication': '通信',
