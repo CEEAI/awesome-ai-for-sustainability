@@ -30,20 +30,7 @@ const ServerCard: React.FC<ServerCardProps> = ({
   const navigate = useNavigate();
 
   const handleViewDetails = () => {
-    // 优先检查是否有外部链接（非GitHub的githubUrl或者npmUrl）
-    if (githubUrl && !githubUrl.includes('github.com')) {
-      // 如果githubUrl存在但不是GitHub链接，直接打开
-      window.open(githubUrl, '_blank');
-    } else if (npmUrl && !githubUrl) {
-      // 如果只有npmUrl没有githubUrl，打开npm链接
-      window.open(npmUrl, '_blank');
-    } else if (githubUrl && githubUrl.includes('github.com')) {
-      // 如果是GitHub链接，跳转到详情页
-      navigate(`/server/${id}`);
-    } else {
-      // 如果什么链接都没有，跳转到详情页
-      navigate(`/server/${id}`);
-    }
+    navigate(`/server/${id}`);
   };
 
   return (
@@ -69,7 +56,7 @@ const ServerCard: React.FC<ServerCardProps> = ({
             {category}
           </Badge>
           <div className="flex items-center space-x-2">
-            {githubUrl && githubUrl.includes('github.com') && (
+            {githubUrl && (
               <Button size="sm" variant="ghost" onClick={() => window.open(githubUrl, '_blank')}>
                 <Github className="w-3 h-3" />
               </Button>
