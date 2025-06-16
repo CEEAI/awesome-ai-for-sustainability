@@ -12,11 +12,8 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 flex items-center justify-center">
-                <img src="/logo.svg" alt="MCP Servers" className="w-8 h-8" />
-              </div>
-              <span className="font-bold text-gray-900">MCP Servers</span>
+            <div className="flex items-center">
+              <img src="/logo.svg" alt="Logo" className="h-10 w-auto" />
             </div>
             <div className="hidden md:flex space-x-6">
               <a href="#" className="text-gray-700 hover:text-brand-600 transition-colors">
