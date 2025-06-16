@@ -28,14 +28,15 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
           pre: ({children}) => <pre className="bg-gray-50 p-4 rounded-lg mb-4 overflow-x-auto border">{children}</pre>,
           blockquote: ({children}) => <blockquote className="border-l-4 border-blue-200 pl-4 py-2 mb-4 bg-blue-50 text-gray-700 italic">{children}</blockquote>,
           a: ({children, href}) => <a href={href} className="text-blue-600 hover:text-blue-800 underline" target="_blank" rel="noopener noreferrer">{children}</a>,
-          img: ({src, alt, title}) => (
-            <div className="my-4">
+          img: ({src, alt, title, ...props}) => (
+            <div className="my-4 flex flex-col items-center">
               <img 
                 src={src} 
                 alt={alt || ''} 
                 title={title}
                 className="max-w-full h-auto rounded-lg border border-gray-200 shadow-sm"
                 loading="lazy"
+                {...props}
               />
               {alt && <p className="text-sm text-gray-500 mt-2 text-center italic">{alt}</p>}
             </div>
