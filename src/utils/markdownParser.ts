@@ -36,8 +36,8 @@ export const parseMarkdownToServers = (markdownContent: string): ServerInfo[] =>
         // 生成唯一 ID
         const id = name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-');
         
-        // 判断是否为官方服务器
-        const isOfficial = line.includes('⭐') || line.includes('official') || currentCategory.toLowerCase().includes('official');
+        // 判断是否为推荐服务器，使用🏅标识
+        const isOfficial = line.includes('🏅') || line.includes('official') || currentCategory.toLowerCase().includes('official');
         
         servers.push({
           id,

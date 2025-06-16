@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, Star, LucideIcon } from 'lucide-react';
+import { Search, Award, LucideIcon } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface FilterTabsProps {
@@ -36,7 +36,7 @@ const FilterTabs: React.FC<FilterTabsProps> = ({
   // 基础过滤器
   const baseFilters: FilterItem[] = [
     { id: 'all', label: t('filter.all') },
-    { id: 'official', label: t('filter.official'), icon: Star },
+    { id: 'official', label: '推荐', icon: Award },
   ];
 
   // 动态生成分类过滤器
