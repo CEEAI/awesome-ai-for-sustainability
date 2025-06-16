@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, Globe } from 'lucide-react';
+import { ExternalLink, Github, Globe, Star } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ServerCardProps {
@@ -39,6 +39,9 @@ const ServerCard: React.FC<ServerCardProps> = ({
     }
   };
 
+  // 清理描述中的星号emoji
+  const cleanDescription = description.replace(/⭐\s*/g, '').trim();
+
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white/80 backdrop-blur-sm border border-gray-200/50 h-[200px] flex flex-col">
       <CardHeader className="pb-3 flex-shrink-0">
@@ -47,13 +50,13 @@ const ServerCard: React.FC<ServerCardProps> = ({
             {name}
           </CardTitle>
           {isOfficial && (
-            <Badge variant="secondary" className="bg-blue-100 text-blue-800 border-blue-200 text-xs flex-shrink-0">
-              ⭐
-            </Badge>
+            <div className="flex items-center justify-center w-6 h-6 bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full shadow-sm flex-shrink-0">
+              <Star className="w-3 h-3 text-white fill-white" />
+            </div>
           )}
         </div>
         <CardDescription className="text-gray-600 text-sm leading-relaxed line-clamp-3">
-          {description}
+          {cleanDescription}
         </CardDescription>
       </CardHeader>
       <CardContent className="pt-0 flex-1 flex flex-col justify-end">
