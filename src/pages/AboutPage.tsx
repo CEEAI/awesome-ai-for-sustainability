@@ -76,9 +76,9 @@ const AboutPage = () => {
               </h2>
             </div>
             
-            <div className="grid lg:grid-cols-2 gap-8 items-start">
+            <div className="grid lg:grid-cols-2 gap-8 items-stretch">
               {/* Left Column - Contact Info */}
-              <div className="space-y-4">
+              <div className="flex flex-col justify-center space-y-4">
                 <div className="flex items-center space-x-4 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
                   <div className="p-2 bg-brand-100 rounded-lg">
                     <Mail className="w-5 h-5 text-brand-600" />
