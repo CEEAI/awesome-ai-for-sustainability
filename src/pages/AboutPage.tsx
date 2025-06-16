@@ -76,35 +76,46 @@ const AboutPage = () => {
               </h2>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
-                <Mail className="w-5 h-5 text-brand-600" />
-                <div>
-                  <p className="font-medium text-gray-900">{t('about.contact.email')}</p>
-                  <p className="text-sm text-gray-600">admin@ceeai.net</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
-                <MapPin className="w-5 h-5 text-brand-600" />
-                <div>
-                  <p className="font-medium text-gray-900">{t('about.contact.address')}</p>
-                  <p className="text-sm text-gray-600">{t('about.contact.addressValue')}</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-3 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
-                <MessageCircle className="w-5 h-5 text-brand-600" />
-                <div>
-                  <p className="font-medium text-gray-900">{t('about.contact.wechat')}</p>
-                  <div className="mt-2">
-                    <img 
-                      src="/lovable-uploads/63b01435-7c0e-4b5c-b20b-95593ad187a2.png" 
-                      alt="CEEAI WeChat QR Code" 
-                      className="w-20 h-20 rounded-lg border border-gray-200"
-                    />
+            <div className="grid lg:grid-cols-2 gap-8 items-start">
+              {/* Left Column - Contact Info */}
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                  <div className="p-2 bg-brand-100 rounded-lg">
+                    <Mail className="w-5 h-5 text-brand-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">{t('about.contact.email')}</p>
+                    <p className="text-sm text-gray-600">admin@ceeai.net</p>
                   </div>
                 </div>
+                
+                <div className="flex items-center space-x-4 p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                  <div className="p-2 bg-brand-100 rounded-lg">
+                    <MapPin className="w-5 h-5 text-brand-600" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">{t('about.contact.address')}</p>
+                    <p className="text-sm text-gray-600">{t('about.contact.addressValue')}</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right Column - WeChat QR Code */}
+              <div className="flex flex-col items-center justify-center bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-6">
+                <div className="flex items-center mb-4">
+                  <div className="p-2 bg-green-100 rounded-lg mr-3">
+                    <MessageCircle className="w-5 h-5 text-green-600" />
+                  </div>
+                  <p className="font-medium text-gray-900 text-lg">{t('about.contact.wechat')}</p>
+                </div>
+                <div className="bg-white p-4 rounded-xl shadow-md">
+                  <img 
+                    src="/lovable-uploads/63b01435-7c0e-4b5c-b20b-95593ad187a2.png" 
+                    alt="CEEAI WeChat QR Code" 
+                    className="w-32 h-32 rounded-lg"
+                  />
+                </div>
+                <p className="text-sm text-gray-500 mt-2 text-center">扫描关注公众号</p>
               </div>
             </div>
           </CardContent>
