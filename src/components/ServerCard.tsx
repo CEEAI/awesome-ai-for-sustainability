@@ -30,11 +30,11 @@ const ServerCard: React.FC<ServerCardProps> = ({
   const navigate = useNavigate();
 
   const handleViewDetails = () => {
-    // 如果有 GitHub 链接，跳转到内部详情页
+    // 只有 GitHub 链接才跳转到内部详情页
     if (githubUrl) {
       navigate(`/server/${id}`);
     } else if (npmUrl) {
-      // 如果没有 GitHub 但有 NPM 链接，直接打开 NPM 链接
+      // 其他任何外部链接都直接在新标签页打开
       window.open(npmUrl, '_blank');
     }
   };
