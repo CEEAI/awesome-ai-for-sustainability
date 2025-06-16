@@ -15,8 +15,7 @@ const SubmitPage = () => {
   };
 
   const handleFeishuForm = () => {
-    // 这里需要替换为实际的飞书表单链接
-    window.open('https://feishu.cn/your-form-link', '_blank');
+    window.open('https://uzmhiopsjv.feishu.cn/share/base/form/shrcnm50Digw3RIsMl4VOQd1QRe', '_blank');
   };
 
   return (
@@ -36,12 +35,12 @@ const SubmitPage = () => {
           {/* 页面标题和介绍 */}
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              {language === 'en' ? 'Submit Your Project' : '提交您的项目'}
+              {language === 'en' ? 'Submit Your Project' : '提交您的资源'}
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               {language === 'en' 
                 ? 'We welcome contributions to our awesome AI for sustainability collection. Choose your preferred way to submit your project or resource.'
-                : '我们欢迎您为我们的可持续AI资源库贡献内容。请选择您偏好的提交方式。'
+                : '欢迎您为AI时代的生态环境领域引擎助力。请选择您偏好的提交方式。'
               }
             </p>
           </div>
@@ -72,8 +71,8 @@ const SubmitPage = () => {
                   <ul className="list-disc list-inside space-y-1">
                     <li>
                       {language === 'en' 
-                        ? 'Fork the repository' 
-                        : 'Fork 仓库'
+                        ? <span>Fork the <a href="https://github.com/CEEAI/awesome-ai-for-sustainability" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">repository</a></span>
+                        : <span>Fork <a href="https://github.com/CEEAI/awesome-ai-for-sustainability" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">本仓库</a></span>
                       }
                     </li>
                     <li>
@@ -84,14 +83,14 @@ const SubmitPage = () => {
                     </li>
                     <li>
                       {language === 'en' 
-                        ? 'Add your project/resource' 
-                        : '添加您的项目/资源'
+                        ? 'Add your tools/data/resources' 
+                        : '添加您的工具/数据/资源'
                       }
                     </li>
                     <li>
                       {language === 'en' 
                         ? 'Submit a pull request' 
-                        : '提交拉取请求'
+                        : '提交拉取请求(Pull Request)'
                       }
                     </li>
                   </ul>
@@ -120,7 +119,7 @@ const SubmitPage = () => {
                 <CardDescription className="text-gray-600">
                   {language === 'en' 
                     ? 'Simple form submission for everyone'
-                    : '简单的表单提交，适合所有人'
+                    : '适合所有用户，填写表单即可提交。'
                   }
                 </CardDescription>
               </CardHeader>
@@ -133,25 +132,25 @@ const SubmitPage = () => {
                     <li>
                       {language === 'en' 
                         ? 'Easy to fill out' 
-                        : '填写简单'
+                        : '填写操作简单便捷'
                       }
                     </li>
                     <li>
                       {language === 'en' 
                         ? 'No technical knowledge required' 
-                        : '无需技术知识'
+                        : '无需任何技术基础'
                       }
                     </li>
                     <li>
                       {language === 'en' 
                         ? 'Admin will review and add' 
-                        : '管理员将审核并添加'
+                        : '提交后由管理员审核并添加到资源库'
                       }
                     </li>
                     <li>
                       {language === 'en' 
                         ? 'Quick submission process' 
-                        : '快速提交流程'
+                        : '提交流程快速高效'
                       }
                     </li>
                   </ul>
@@ -177,8 +176,8 @@ const SubmitPage = () => {
               </h3>
               <p className="text-gray-600 text-sm">
                 {language === 'en' 
-                  ? 'If you have any questions about submitting your project, please contact our team. We are here to help you contribute to the AI for sustainability community.'
-                  : '如果您在提交项目时有任何疑问，请联系我们的团队。我们随时为您提供帮助，共同为可持续AI社区做出贡献。'
+                  ? <>If you have any questions about submitting your project, please contact <a href="mailto:admin@ceeai.net" className="text-blue-600 hover:text-blue-800 font-medium underline">admin@ceeai.net</a>. We are here to help you contribute to the AI for sustainability community.</>
+                  : <>如果您在提交时有任何疑问，请联系<a href="mailto:admin@ceeai.net" className="text-blue-600 hover:text-blue-800 font-medium underline">admin@ceeai.net</a>。我们随时为您提供帮助，共同为可持续AI社区做出贡献。</>
                 }
               </p>
             </div>
