@@ -30,15 +30,20 @@ const ServerCard: React.FC<ServerCardProps> = ({
   const navigate = useNavigate();
 
   const handleViewDetails = () => {
-    // 如果有外部链接且不是 GitHub 链接，直接打开外部链接
+    // 如果 githubUrl 存在但不是 GitHub 链接，直接打开外部链接
+    if (githubUrl && !githubUrl.includes('github.com')) {
+      window.open(githubUrl, '_blank');
+      return;
+    }
+    
+    // 如果只有 npmUrl 没有 githubUrl，打开 npm 链接
     if (npmUrl && !githubUrl) {
       window.open(npmUrl, '_blank');
-    } else if (githubUrl && !githubUrl.includes('github.com')) {
-      window.open(githubUrl, '_blank');
-    } else {
-      // 否则跳转到详情页
-      navigate(`/server/${id}`);
+      return;
     }
+    
+    // 其他情况跳转到详情页
+    navigate(`/server/${id}`);
   };
 
   return (
