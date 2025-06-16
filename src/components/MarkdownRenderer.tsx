@@ -1,6 +1,7 @@
 
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 interface MarkdownRendererProps {
   content: string;
@@ -10,6 +11,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
   return (
     <div className="markdown-content">
       <ReactMarkdown 
+        rehypePlugins={[rehypeRaw]}
         components={{
           h1: ({children}) => <h1 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">{children}</h1>,
           h2: ({children}) => <h2 className="text-xl font-semibold text-gray-800 mb-3 mt-6">{children}</h2>,
