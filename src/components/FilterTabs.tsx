@@ -64,7 +64,7 @@ const FilterTabs: React.FC<FilterTabsProps> = ({
         <div className="flex justify-center">
           <div className="flex flex-wrap gap-2 justify-center max-w-4xl">
             {filters.map((filter) => {
-              const Icon = filter.icon;
+              const Icon = 'icon' in filter ? filter.icon : undefined;
               return (
                 <Button
                   key={filter.id}

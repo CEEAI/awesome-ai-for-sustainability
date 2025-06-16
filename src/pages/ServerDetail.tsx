@@ -12,9 +12,9 @@ import { useReadmeData } from '@/hooks/useReadmeData';
 const ServerDetail = () => {
   const { serverId } = useParams<{ serverId: string }>();
   const { language, t } = useLanguage();
-  const { data: servers, isLoading } = useReadmeData({ language });
+  const { data, isLoading } = useReadmeData({ language });
 
-  const server = servers?.find(s => s.id === serverId);
+  const server = data?.servers?.find(s => s.id === serverId);
 
   // Fetch README from GitHub using raw content URL
   const { data: githubReadme, isLoading: isLoadingReadme } = useQuery({
