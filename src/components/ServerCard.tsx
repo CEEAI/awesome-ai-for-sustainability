@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -33,9 +32,12 @@ const ServerCard: React.FC<ServerCardProps> = ({
     // 只有 GitHub 链接才跳转到内部详情页
     if (githubUrl) {
       navigate(`/server/${id}`);
-    } else if (npmUrl) {
-      // 其他任何外部链接都直接在新标签页打开
-      window.open(npmUrl, '_blank');
+    } else {
+      // 任何其他外部链接都直接在新标签页打开
+      const externalUrl = npmUrl || githubUrl;
+      if (externalUrl) {
+        window.open(externalUrl, '_blank');
+      }
     }
   };
 
