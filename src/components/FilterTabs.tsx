@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, Star } from 'lucide-react';
+import { Search, Star, LucideIcon } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface FilterTabsProps {
@@ -12,6 +12,17 @@ interface FilterTabsProps {
   onSearchChange: (query: string) => void;
   categories: string[];
 }
+
+interface BaseFilter {
+  id: string;
+  label: string;
+}
+
+interface FilterWithIcon extends BaseFilter {
+  icon: LucideIcon;
+}
+
+type FilterItem = BaseFilter | FilterWithIcon;
 
 const FilterTabs: React.FC<FilterTabsProps> = ({
   activeFilter,
@@ -23,13 +34,13 @@ const FilterTabs: React.FC<FilterTabsProps> = ({
   const { t } = useLanguage();
 
   // 基础过滤器
-  const baseFilters = [
+  const baseFilters: FilterItem[] = [
     { id: 'all', label: t('filter.all') },
     { id: 'official', label: t('filter.official'), icon: Star },
   ];
 
   // 动态生成分类过滤器
-  const categoryFilters = categories.map(category => ({
+  const categoryFilters: FilterItem[] = categories.map(category => ({
     id: category.toLowerCase().replace(/\s+/g, '-'),
     label: category,
   }));
@@ -64,7 +75,8 @@ const FilterTabs: React.FC<FilterTabsProps> = ({
         <div className="flex justify-center">
           <div className="flex flex-wrap gap-2 justify-center max-w-4xl">
             {filters.map((filter) => {
-              const Icon = 'icon' in filter ? filter.icon : undefined;
+              const hasIcon = 'icon' in filter;
+              const Icon = hasIcon ? filter.icon : undefined;
               return (
                 <Button
                   key={filter.id}

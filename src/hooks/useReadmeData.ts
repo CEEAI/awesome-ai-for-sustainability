@@ -19,10 +19,16 @@ export const useReadmeData = ({ language }: UseReadmeDataProps) => {
         const markdownContent = await fetchReadmeContent(language);
         const servers = parseMarkdownToServers(markdownContent);
         
-        // 提取所有唯一的分类
-        const categories = Array.from(new Set(servers.map(server => server.category)))
-          .filter(category => category && category !== 'Other')
+        // 提取所有唯一的分类，包括 "Other"
+        const allCategories = Array.from(new Set(servers.map(server => server.category)))
+          .filter(category => category && category.trim() !== '')
           .sort();
+        
+        // 确保 "Other" 分类在最后
+        const categories = allCategories.filter(cat => cat !== 'Other');
+        if (allCategories.includes('Other')) {
+          categories.push('Other');
+        }
         
         return { servers, categories };
       } catch (error) {
