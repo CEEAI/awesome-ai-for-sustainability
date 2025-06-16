@@ -1,10 +1,11 @@
 
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, Package } from 'lucide-react';
+import { ExternalLink, Github, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ServerCardProps {
@@ -69,7 +70,7 @@ const ServerCard: React.FC<ServerCardProps> = ({
             )}
             {externalUrl && !githubUrl && (
               <Button size="sm" variant="ghost" onClick={() => window.open(externalUrl, '_blank')}>
-                <Package className="w-3 h-3" />
+                <Globe className="w-3 h-3" />
               </Button>
             )}
             <Button size="sm" variant="ghost" className="text-brand-600 hover:text-brand-700 hover:bg-brand-50" onClick={handleViewDetails}>
@@ -84,3 +85,4 @@ const ServerCard: React.FC<ServerCardProps> = ({
 };
 
 export default ServerCard;
+
