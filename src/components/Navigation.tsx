@@ -1,42 +1,23 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const { language, setLanguage, t } = useLanguage();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const handleSubmitClick = () => {
-    navigate('/submit');
-  };
-
-  const handleHomeClick = () => {
-    navigate('/');
-  };
 
   return (
     <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
-            <div className="flex items-center cursor-pointer" onClick={handleHomeClick}>
+            <div className="flex items-center">
               <img src="/logo.svg" alt="Logo" className="h-7 w-auto" />
             </div>
             <div className="hidden md:flex space-x-6">
-              <button 
-                onClick={handleHomeClick}
-                className={`transition-colors ${
-                  location.pathname === '/' 
-                    ? 'text-brand-600' 
-                    : 'text-gray-700 hover:text-brand-600'
-                }`}
-              >
+              <a href="#" className="text-gray-700 hover:text-brand-600 transition-colors">
                 {t('nav.home')}
-              </button>
+              </a>
               <a href="#" className="text-gray-700 hover:text-brand-600 transition-colors">
                 {t('nav.servers')}
               </a>
@@ -57,10 +38,7 @@ const Navigation = () => {
               <span>{language === 'en' ? '中文' : 'EN'}</span>
             </Button>
             
-            <Button 
-              className="bg-gray-900 hover:bg-gray-800 text-white"
-              onClick={handleSubmitClick}
-            >
+            <Button className="bg-gray-900 hover:bg-gray-800 text-white">
               {t('nav.submit')}
             </Button>
           </div>
