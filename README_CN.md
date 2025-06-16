@@ -7,19 +7,19 @@
 
 ## 官方服务器
 
-- [Brave 搜索](https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search) ⭐ - 使用 Brave 搜索 API 进行网络和本地搜索
-- [文件系统](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) ⭐ - 具有可配置访问控制的安全文件操作
-- [Git](https://github.com/modelcontextprotocol/servers/tree/main/src/git) ⭐ - 读取、搜索和操作 Git 仓库的工具
-- [GitHub](https://github.com/modelcontextprotocol/servers/tree/main/src/github) ⭐ - 仓库管理、文件操作和 GitHub API 集成
-- [GitLab](https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab) ⭐ - GitLab API、合并请求、问题和仓库管理
-- [Google Drive](https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive) ⭐ - Google Drive 的文件访问和搜索功能
-- [PostgreSQL](https://github.com/modelcontextprotocol/servers/tree/main/src/postgres) ⭐ - 具有模式内省的只读数据库访问
-- [Slack](https://github.com/modelcontextprotocol/servers/tree/main/src/slack) ⭐ - 频道管理和消息传递功能
-- [SQLite](https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite) ⭐ - 数据库交互和商业智能查询
+- [Brave 搜索](https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search) 🏅 - 使用 Brave 搜索 API 进行网络和本地搜索
+- [文件系统](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) 🏅 - 具有可配置访问控制的安全文件操作
+- [Git](https://github.com/modelcontextprotocol/servers/tree/main/src/git) 🏅 - 读取、搜索和操作 Git 仓库的工具
+- [GitHub](https://github.com/modelcontextprotocol/servers/tree/main/src/github) 🏅 - 仓库管理、文件操作和 GitHub API 集成
+- [GitLab](https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab) 🏅 - GitLab API、合并请求、问题和仓库管理
+- [Google Drive](https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive) 🏅 - Google Drive 的文件访问和搜索功能
+- [PostgreSQL](https://github.com/modelcontextprotocol/servers/tree/main/src/postgres) 🏅 - 具有模式内省的只读数据库访问
+- [Slack](https://github.com/modelcontextprotocol/servers/tree/main/src/slack) 🏅 - 频道管理和消息传递功能
+- [SQLite](https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite) 🏅 - 数据库交互和商业智能查询
 
 ## 基准数据集
 
-- [Environmental LLm Evaluation - ELLE](https://elle.ceeai.net) ⭐ - 环境主题的 LLM 评估基准数据集
+- [Environmental LLm Evaluation - ELLE](https://elle.ceeai.net) 🏅 - 环境主题的 LLM 评估基准数据集
 
 ## 其他
 
