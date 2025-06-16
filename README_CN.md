@@ -17,59 +17,9 @@
 - [Slack](https://github.com/modelcontextprotocol/servers/tree/main/src/slack) ⭐ - 频道管理和消息传递功能
 - [SQLite](https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite) ⭐ - 数据库交互和商业智能查询
 
-## 搜索
+## 基准数据集
 
-- [Exa 搜索](https://github.com/exa-labs/exa-mcp-server) - 使用 Exa 搜索 API 进行语义搜索的网络搜索
-- [Tavily 搜索](https://github.com/tavily-ai/tavily-mcp-server) - 使用 Tavily 搜索 API 为 LLM 和 RAG 优化的网络搜索
-
-## 网页抓取
-
-- [Puppeteer](https://github.com/executeautomation/puppeteer-mcp-server) - 使用 Puppeteer 进行网页抓取和浏览器自动化
-- [Playwright](https://github.com/executeautomation/playwright-mcp-server) - 使用 Playwright 进行网页抓取和浏览器自动化
-
-## 通信
-
-- [Discord](https://github.com/iamjameskeane/discord-mcp-server) - Discord 机器人集成和频道管理
-- [WhatsApp](https://github.com/iamjameskeane/whatsapp-mcp-server) - WhatsApp 消息集成
-
-## 生产力
-
-- [Notion](https://github.com/iamjameskeane/notion-mcp-server) - Notion 工作区集成和内容管理
-- [Obsidian](https://github.com/iamjameskeane/obsidian-mcp-server) - Obsidian 保险库管理和笔记
-- [Linear](https://github.com/iamjameskeane/linear-mcp-server) - Linear 问题跟踪和项目管理
-
-## 开发
-
-- [NPM](https://github.com/iamjameskeane/npm-mcp-server) - NPM 包搜索和管理
-- [Docker](https://github.com/iamjameskeane/docker-mcp-server) - Docker 容器和镜像管理
-- [Kubernetes](https://github.com/iamjameskeane/kubernetes-mcp-server) - Kubernetes 集群管理和操作
-
-## 数据库
-
-- [MySQL](https://github.com/iamjameskeane/mysql-mcp-server) - MySQL 数据库操作和查询
-- [MongoDB](https://github.com/iamjameskeane/mongodb-mcp-server) - MongoDB 数据库操作和文档管理
-- [Redis](https://github.com/iamjameskeane/redis-mcp-server) - Redis 操作和缓存管理
-
-## 云服务
-
-- [AWS](https://github.com/iamjameskeane/aws-mcp-server) - AWS 服务集成和管理
-- [Azure](https://github.com/iamjameskeane/azure-mcp-server) - Microsoft Azure 服务集成
-- [Google Cloud](https://github.com/iamjameskeane/gcp-mcp-server) - Google Cloud Platform 集成
-
-## 文件系统
-
-- [S3](https://github.com/iamjameskeane/s3-mcp-server) - Amazon S3 文件操作和管理
-- [FTP](https://github.com/iamjameskeane/ftp-mcp-server) - FTP 文件传输和管理
-
-## 云存储
-
-- [Dropbox](https://github.com/iamjameskeane/dropbox-mcp-server) - Dropbox 文件同步和共享
-- [OneDrive](https://github.com/iamjameskeane/onedrive-mcp-server) - Microsoft OneDrive 集成
-
-## 版本控制
-
-- [Bitbucket](https://github.com/iamjameskeane/bitbucket-mcp-server) - Bitbucket 仓库管理和操作
-- [Subversion](https://github.com/iamjameskeane/svn-mcp-server) - Subversion 版本控制操作
+- [Environmental LLm Evaluation - ELLE](https://elle.ceeai.net) ⭐ - 环境主题的 LLM 评估基准数据集
 
 ## 其他
 

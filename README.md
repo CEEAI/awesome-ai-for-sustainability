@@ -18,59 +18,9 @@ A collection of servers for the Model Context Protocol.
 - [Slack](https://github.com/modelcontextprotocol/servers/tree/main/src/slack) ⭐ - Channel management and messaging capabilities
 - [SQLite](https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite) ⭐ - Database interaction and business intelligence queries
 
-## Search
+## Benchmark Dataset
 
-- [Exa Search](https://github.com/exa-labs/exa-mcp-server) - Web search using Exa's search API with semantic search capabilities
-- [Tavily Search](https://github.com/tavily-ai/tavily-mcp-server) - Web search using Tavily's search API optimized for LLMs and RAG
-
-## Web Scraping
-
-- [Puppeteer](https://github.com/executeautomation/puppeteer-mcp-server) - Web scraping and browser automation using Puppeteer
-- [Playwright](https://github.com/executeautomation/playwright-mcp-server) - Web scraping and browser automation using Playwright
-
-## Communication
-
-- [Discord](https://github.com/iamjameskeane/discord-mcp-server) - Discord bot integration and channel management
-- [WhatsApp](https://github.com/iamjameskeane/whatsapp-mcp-server) - WhatsApp messaging integration
-
-## Productivity
-
-- [Notion](https://github.com/iamjameskeane/notion-mcp-server) - Notion workspace integration and content management
-- [Obsidian](https://github.com/iamjameskeane/obsidian-mcp-server) - Obsidian vault management and note-taking
-- [Linear](https://github.com/iamjameskeane/linear-mcp-server) - Linear issue tracking and project management
-
-## Development
-
-- [NPM](https://github.com/iamjameskeane/npm-mcp-server) - NPM package search and management
-- [Docker](https://github.com/iamjameskeane/docker-mcp-server) - Docker container and image management
-- [Kubernetes](https://github.com/iamjameskeane/kubernetes-mcp-server) - Kubernetes cluster management and operations
-
-## Database
-
-- [MySQL](https://github.com/iamjameskeane/mysql-mcp-server) - MySQL database operations and queries
-- [MongoDB](https://github.com/iamjameskeane/mongodb-mcp-server) - MongoDB database operations and document management
-- [Redis](https://github.com/iamjameskeane/redis-mcp-server) - Redis operations and caching management
-
-## Cloud Service
-
-- [AWS](https://github.com/iamjameskeane/aws-mcp-server) - AWS service integration and management
-- [Azure](https://github.com/iamjameskeane/azure-mcp-server) - Microsoft Azure service integration
-- [Google Cloud](https://github.com/iamjameskeane/gcp-mcp-server) - Google Cloud Platform integration
-
-## File System
-
-- [S3](https://github.com/iamjameskeane/s3-mcp-server) - Amazon S3 file operations and management
-- [FTP](https://github.com/iamjameskeane/ftp-mcp-server) - FTP file transfer and management
-
-## Cloud Storage
-
-- [Dropbox](https://github.com/iamjameskeane/dropbox-mcp-server) - Dropbox file sync and sharing
-- [OneDrive](https://github.com/iamjameskeane/onedrive-mcp-server) - Microsoft OneDrive integration
-
-## Version Control
-
-- [Bitbucket](https://github.com/iamjameskeane/bitbucket-mcp-server) - Bitbucket repository management and operations
-- [Subversion](https://github.com/iamjameskeane/svn-mcp-server) - Subversion version control operations
+- [Environmental LLm Evaluation - ELLE](https://elle.ceeai.net) ⭐ - Benchmark dataset for evaluating LLMs on environmental topics
 
 ## Other
 
